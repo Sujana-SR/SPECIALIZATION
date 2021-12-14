@@ -1,0 +1,687 @@
+*class is a blueprint of similar kind of objects.
+*object is the instance of class.
+
+
+*COLLICTION is a frame works that provides an architucture to store and manipulate the group of objects.
+
+*dependencies 
+IOC :-spring container will create the life cycle of objects
+dependience injection ;- where ever this g                      IOC will get injected.
+
+ 
+employee 
+--------
+pacage
+class Emp
+create getter setter n all right click-->
+source -getter and setters,constructor,to srting.
+
+class EmpDemo
+
+-------
+List<Emp> emplist = new ArrayList<Emp>();
+
+<Emp> will only let to store the details of employee
+and not any other thing other tha employee details,
+
+eg. empList.add(ramEmp);
+    empList.add(anandEmp);
+ 
+so that <Emp> container will store the details of emp list.
+
+where as if uh enter 
+    empList.add(123);
+    empList.add("books");
+
+it will give error cause 123 and book are  not related to emp it is something irrelevent. so we use <Emp. container.
+------
+HashSet is used to avoid duplication
+--------------------------------------------------------------
+bank
+package com.torryharris.lab;
+ 
+public interface Bank {
+
+    void withDraw(int amount);
+    void deposit(int amount);
+    void showBalance();
+ 
+}
+
+SBIBank.java
+
+
+package com.torryharris.lab; public class SBIBank implements Bank {​​​​​
+
+    private int balance;
+
+    SBIBank(int amount){​​​​​
+
+        this.balance = amount;
+
+    }​​​​​     @Override
+
+    public void withDraw(int amount) {​​​​​
+
+        if(amount < balance)
+
+            balance = balance - amount;
+
+            else System.out.println("From SBIBank......InSufficient Funds");
+
+    }​​​​​     @Override
+
+    public void deposit(int amount) {​​​​​
+
+        if(amount < 50000)
+
+        balance = balance + amount;
+
+        else System.out.println("From SBIBank...... Not possible to depost");
+
+    }​​​​​     @Override
+
+    public void showBalance() {​​​​​
+
+        System.out.println("From SBIBank...... Availiable Balance ...."+balance);
+
+    }​​​​​
+
+    public void licPolicy() {​​​​​
+
+        System.out.println("From SBIBank......licPolicy");
+
+    }​​​​​ }​​​​​
+
+
+
+
+AXISBank.java
+
+package com.torryharris.lab; public class AXISBank implements Bank {​​​​​
+
+    private int balance;
+
+    AXISBank(int amount){​​​​​
+
+        this.balance = amount;
+
+    }​​​​​     @Override
+
+    public void withDraw(int amount) {​​​​​
+
+        if(amount < balance)
+
+            balance = balance - amount;
+
+            else System.out.println("From AXISBank......InSufficient Funds");
+
+    }​​​​​     @Override
+
+    public void deposit(int amount) {​​​​​
+
+        if(amount < 200000)
+
+        balance = balance + amount;
+
+        else System.out.println("From AXISBank...... Not possible to depost");
+
+    }​​​​​     @Override
+
+    public void showBalance() {​​​​​
+
+        System.out.println("From AXISBank...... Availiable Balance ...."+balance);
+
+    }​​​​​ }​​​​​
+
+
+
+
+MainBank.java
+
+
+package com.torryharris.lab; public class MainBank {​​​​​     public static void main(String[] args) {​​​​​
+
+    /*SBIBank sbiBank = new SBIBank(15000);
+
+    AXISBank aXISBank = new AXISBank(35000);
+
+    sbiBank.showBalance();
+
+    aXISBank.showBalance();
+
+    sbiBank.deposit(25000);
+
+    sbiBank.withDraw(15000);
+
+    sbiBank.showBalance();
+
+    sbiBank.withDraw(55000);*/
+
+    //Bank bank;
+
+    SBIBank bank = new SBIBank(15000);
+
+    bank.licPolicy();
+
+    bank.showBalance();
+
+    //bank = new AXISBank(35000);
+
+    //bank.showBalance();
+
+    }​​​​​ }​​​​​
+
+-------------------------------------------------------------------------------------------------------------------
+                                                         AFTERNOON
+-------------------------------------------------------------------------------------------------------------------
+
+1.write a program to find sum of the smallest and highest prime number in a given range?
+
+
+
+2.Program to Round a Number to n Decimal Places/////Input....1.34678----OutPut.....1.35
+
+
+
+3.Write a program to display a number whose digits are 3 greater than the corresponding digits of the number TAKEN.
+
+For example, if the number is 5696, then output should be 8919
+
+
+
+4.Program to  find common elements in three arrays which are sorted? 
+
+Examples: input1 = {​​​​​12, 35, 310, 120, 640, 180}​​​​​
+
+input2 = {​​​​​656, 327, 120, 180, 5600}​​​​​
+
+input3 = {​​​​​33, 44, 515, 120, 330, 770, 180, 1120}​​​​​
+
+Output: 120, 180
+
+
+
+5.find the sum of array elements which repeating 5 times in given 20 elements array?
+
+
+------------------------------------------------------------------------------------------------------------------
+                            ANSWERS
+
+
+1.)
+
+package Demo02;
+
+public class CheckPrime {
+        static boolean checkPrime(int numberToCheck)
+        {
+            if(numberToCheck == 1) {
+                return false;
+            }
+            for (int i = 2; i*i <= numberToCheck; i++) {
+                if (numberToCheck % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // Method to iterate the loop from l to r
+// If prime number detects, sum the value
+        static int primeSum(int l, int r)
+        {
+            int sum = 0;
+            for (int i = r; i >= l; i--) {
+
+// Check for prime
+                boolean isPrime = checkPrime(i);
+                if (isPrime) {
+
+// Sum the prime number
+                    sum = sum + i;
+                }
+            }
+            return sum;
+        }
+// Time Complexity is O(r x sqrt(N))
+
+        // Driver code
+        public static void main(String[] args)
+        {
+            int l = 4, r = 13;
+// Call the method with l and r
+            System.out.println(primeSum(l, r));
+        }
+    }
+
+
+---------------------------------------------------------------------------
+2.)
+
+package Demo02;
+import java.util.*;
+//2 question
+public class RoundingOff {
+
+
+        public static void main(String[] args)
+        {
+            double number = 1.34678;
+// rounding number to 2 decimal places
+            System.out.format("%.2f", number);
+        }
+
+    }
+-----------------------------------------------------------------------------------
+3).
+package Demo02;
+import java.util.Scanner;
+public class Main {
+// 3 question
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            int no, first, second, third, fourth, Increased_no;
+            System.out.println("Type any 4-digit no. : \n");
+            no = sc.nextInt();
+            first = no / 1000;
+            no = no % 1000;
+            second = no / 100;
+            no = no % 100;
+            third = no / 10;
+            fourth = no % 10;
+            Increased_no = (first + 3) * 1000 + (second + 3) * 100 + (third + 3) * 10 + (fourth + 3);
+            System.out.println("Increased No. is " + Increased_no);
+        }
+    }
+
+------------------------------------------------------------------------------------
+4).package Demo02;
+
+public class FindCommon {
+    // 4.) Java program to find common elements in three arrays
+
+
+        // This function prints common elements in ar1
+        void findCommon(int ar1[], int ar2[], int ar3[])
+        {
+// Initialize starting indexes for ar1[], ar2[] and ar3[]
+            int i = 0, j = 0, k = 0;
+
+
+
+// Iterate through three arrays while all arrays have elements
+            while (i < ar1.length && j < ar2.length && k < ar3.length)
+            {
+// If x = y and y = z, print any of them and move ahead
+// in all arrays
+                if (ar1[i] == ar2[j] && ar2[j] == ar3[k])
+                { System.out.print(ar1[i]+" "); i++; j++; k++; }
+
+
+// x < y
+                else if (ar1[i] < ar2[j])
+                    i++;
+
+// y < z
+                else if (ar2[j] < ar3[k])
+                    j++;
+
+
+
+// We reach here when x > y and z < y, i.e., z is smallest
+                else
+                    k++;
+            }
+        }
+
+
+
+        // Driver code to test above
+        public static void main(String args[])
+        {
+            FindCommon ob = new FindCommon();
+
+           // int ar1[] = {12, 35, 310, 120, 640, 180};
+            //int ar2[] = {656, 327, 120, 180, 5600};
+            //int ar3[] = {33, 44, 515, 120, 330, 770, 180, 1120};
+            int ar1[] = {1, 5, 10, 20, 40, 80};
+            int ar2[] = {6, 7, 20, 80, 100};
+            int ar3[] = {3, 4, 15, 20, 30, 70, 80, 120};
+            System.out.print("Common elements are ");
+            ob.findCommon(ar1, ar2, ar3);
+        }
+    }
+
+--------------------------------------------------------------------------
+5.)
+package Demo02;
+
+import java.sql.SQLOutput;
+import java.util.Scanner;
+
+public class Lastdigit {
+public static void main(String args[]) {
+    Scanner sc = new Scanner(System.in);
+    int num = sc.nextInt();
+    int a;
+    int r;
+    r = num % 10;//7
+    a=num/10000;
+    if(a==r)
+    {
+        System.out.println("they are equal");
+    }
+    else
+    {
+        System.out.println("not equal");
+    }
+}
+}
+******************************************************************************************************
+24/11/21
+day:03
+
+1.Define two methods to print the maximum and the minimum number respectively among three numbers entered by user.
+ 
+2.Define a program to find out whether a given number is even or odd.
+ 
+3.A person is elligible to vote if his/her age is greater than or equal to 18. Define a method to find out if he/she is elligible to vote.
+ 
+4.Write a program to print the sum of two numbers entered by user by defining your own method.
+ 
+5.Define a method that returns the product of two numbers entered by user.
+ 
+6.Write a program which will ask the user to enter his/her marks (out of 100). Define a method that will display grades according to the marks entered as below:
+Marks        Grade
+91-100         AA
+81-90          AB
+71-80          BB
+61-70          BC
+51-60          CD
+41-50          DD
+<=40          Fail
+ 
+7.Write a program to print the factorial of a number by defining a method named 'Factorial'.
+Factorial of any number n is represented by n! and is equal to 1*2*3*....*(n-1)*n. E.g.-
+4! = 1*2*3*4 = 24
+3! = 3*2*1 = 6
+2! = 2*1 = 2
+Also,
+1! = 1
+0! = 0
+ 
+
+8.Define a method named 'perfect' that determines if parameter number is a perfect number. Use this function in a program that determines and prints all the perfect numbers between 1 and 1000.
+[An integer number is said to be "perfect number" if its factors, including 1(but not the number itself), sum to the number. E.g., 6 is a perfect number because 6=1+2+3].
+ 
+
+9.Write a program that takes as input your gross salary and your total saving and uses another function named taxCalculator() to calculate your tax. 
+The taxCalculator() function takes as parameters the gross salary as well as the total savings amount. The tax is calculated as follows:
+(a) The savings is deducted from the gross income to calculate the taxable income. Maximum deduction of savings can be Rs. 100,000, 
+even though the amount can be more than this.
+(b) For up to 100,000 as taxable income the tax is 0 (Slab 0); beyond 100,000 to 200,000 tax is 10% of the difference above 100,000 (Slab 1); 
+beyond 200,000 up to 500,000 the net tax is the tax calculated from Slab 0 and Slab 1 and then 20% of the taxable income exceeding 200,000 (Slab 2); 
+if its more than 500,000, then the tax is tax from Slab 0, Slab 1, Slab 2 and 30% of the amount exceeding 500,000.
+
+
+                                         -------------ANSWERS------------------
+
+package Demo02;
+//1.Define two methods to print the maximum and the minimum number respectively among three numbers entered by user
+ import java.util.Scanner;
+public class MaxMin {
+    /*public static int maxi() {
+            Scanner sc = new Scanner(System.in);
+            int num1 = sc.nextInt();
+            int num2 = sc.nextInt();
+            int num3 = sc.nextInt();
+            if (num1>num2&&num1>num3) return num1;
+            else if (num2 > num3) return num2;
+            else return num3;
+        }
+        public static int mini() {
+            Scanner sc = new Scanner(System.in);
+            int num1 = sc.nextInt();
+            int num2 = sc.nextInt();
+            int num3 = sc.nextInt();
+            if (num1<num2&&num1<num3) return num1;
+            else if (num2 < num3) return num2;
+            else return num3;
+        }
+        public static void main(String args[])
+        {
+            System.out.println("maximum"+maxi());
+            System.out.println("minimum"+mini());
+        }
+    }*/
+
+
+    public static int maxi(int num1, int num2, int num3)
+    {
+        if(num1>num2&&num1>num3) return num1;
+        else if(num2>num3) return num2;
+        else return num3;
+    }
+
+    public static int mini(int num1, int num2, int num3)
+    {
+        Scanner sc=new Scanner(System.in);
+        if(num1<num2&&num1<num3) return num1;
+        else if(num2<num3) return num2;
+        else return num3;
+    }
+
+
+
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.print("enter the number1");
+        int num1=sc.nextInt();
+        System.out.print("enter the number2");
+        int num2=sc.nextInt();
+        System.out.print("enter the number3");
+        int num3=sc.nextInt();
+        System.out.println("max num"+maxi(num1,num2,num3));
+        System.out.println("min num"+mini(num1,num2,num3));
+    }
+}
+
+
+----------------------------------------------------------------------------------------
+
+package Demo02;
+//2.Define a program to find out whether a given number is even or odd.
+import java.util.Scanner;
+public class Odd_Even {
+public static void main(String[] args)
+{
+    int n;
+    Scanner s= new Scanner(System.in);
+    System.out.print("enter the number you want to check:");
+    n = s.nextInt();
+    if(n % 2 == 0)
+    {
+        System.out.println("the given number "+n+" is even");
+    }
+    else
+    {
+        System.out.println("the given number "+n+" is odd");
+    }
+}
+}
+-------------------------------------------------
+package Demo02;
+//3.A person is elligible to vote if his/her age is greater than or equal to 18. Define a method to find out if he/she is elligible to vote
+import java.util.Scanner;
+public class VotingAge {
+    public static void main(String[] args){
+        int age;
+        Scanner sc = new Scanner(System.in);
+        System.out.print("enter your age=");
+        age = sc.nextInt();
+        if(age>= 18)
+        {
+            System.out.println("you are eligible for vote.");
+        }
+        else
+        {
+            System.out.println("you are not eligible for votr.");
+        }
+    }
+}
+
+
+/*import java.util.Scanner;
+
+
+
+public class Vote {
+
+
+
+    private static void eligile(int age) {
+        if(age>=18) System.out.println("Can vote");
+        else System.out.println("Cant vote");
+    }
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter age");
+        int age=sc.nextInt();
+        eligile(age);
+
+
+
+    }
+}*/
+
+-------------------------------------------------
+package Demo02;
+//4.Write a program to print the sum of two numbers entered by user by defining your own method.
+
+import java.util.Scanner;
+public class Sum {
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner( System.in);
+        System.out.print("input the first number:");
+        int num1 = input.nextInt();
+        System.out.print("input the second number:");
+        int num2 = input.nextInt();
+        int sum = num1 + num2;
+        System.out.println();
+        System.out.println("Sum: "+sum);
+    }
+}
+------------------------------------------------------------------
+package Demo02;
+//5.Define a method that returns the product of two numbers entered by user
+import java.util.Scanner;
+public class Product {
+    public static void main(String[] args)
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.print("input first number:");
+        int num1 = in.nextInt();
+        System.out.print("input second number:");
+        int num2 = in.nextInt();
+    System.out.println(num1 + "x" + num2 + "=" + num1 * num2);
+    }
+}
+
+
+
+-----------------------------------------------------------------------
+package Demo02;
+//6.Write a program which will ask the user to enter his/her marks (out of 100). Define a method that will display grades according to the marks entered as below:
+//Marks        Grade
+//91-100         AA
+//81-90          AB
+//71-80          BB
+//61-70          BC
+//51-60          CD
+//41-50          DD
+//<=40          Fail
+import java.util.*;
+public class Grade {
+
+
+        /*public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            int mark;
+            System.out.println("Enter marks");
+            mark=sc.nextInt();
+            if(mark>=91)
+            {
+                System.out.println("Grade is AA for marks"+" "+mark);
+            }
+            else if((mark>=81)&&(mark<90))
+            {
+                System.out.println("Grade is AB for marks"+" "+mark);
+
+            }
+            else if(mark>=71) System.out.println("Grade is BB for marks"+" "+mark);
+            else if(mark>=61) System.out.println("Grade is BC for marks"+" "+mark);
+            else if(mark>=51) System.out.println("Grade is CD for marks"+" "+mark);
+            else if(mark>=41) System.out.println("Grade is DD for marks"+" "+mark);
+            else System.out.println("Grade is FAIL for marks"+" "+mark);
+        }
+    }*/
+
+
+
+        private static String grade(int marks) {
+            if(marks>=91) return "AA";
+            if(marks>=81) return "AB";
+            if(marks>=71) return "BB";
+            if(marks>=61) return "BC";
+            if(marks>=51) return "CD";
+            if(marks>=41) return "DD";
+            else return "Fail";
+        }
+        public static void main(String args[])
+        {
+            Scanner sc = new Scanner(System.in);
+            int marks= sc.nextInt();
+            System.out.println("Grade for marks"+" "+marks+" "+grade(marks));
+        }
+    }
+
+
+-------------------------------------------------------------------------------
+package Demo02;
+//7.Write a program to print the factorial of a number by defining a method named 'Factorial'.
+//Factorial of any number n is represented by n! and is equal to 1*2*3*....*(n-1)*n. E.g.-
+//4! = 1*2*3*4 = 24
+//3! = 3*2*1 = 6
+//2! = 2*1 = 2
+//Also,
+//1! = 1
+//0! = 0
+import java.util.Scanner;
+public class Factorial {
+    public static void main(String args[])
+    {
+        int n,c,f=1;
+        System.out.println("enter an integer to calculate its factorial");
+        Scanner in = new Scanner(System.in);
+        n= in.nextInt();
+        if(n<0)
+            System.out.println("number should be non-negative.");
+        else
+        {
+            for(c=1;c<=n;c++)
+                f=f*c;
+            System.out.println("factorial of "+n+" is= "+f);
+        }
+    }
+}
+
+------------------------------------------------------------------------------------------
+8.)
+
+
+-------------------------------------------------------------------------------------------
+9.)
